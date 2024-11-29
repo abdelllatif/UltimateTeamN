@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <title>Ultimate Team</title>
+    <script src="players.js"></script>
+</head>
+<body>
+    <header>
+        
+        <nav>
+            <div class="logo">
+                <img src="src/assets/img/logo (2).png" alt="Ultimate Team Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">🏠 Accueil</a></li>
+                <li><a href="#add-player">➕ Ajouter Joueur</a></li>
+                <li><a href="#formation">⚙️ Formation</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button class="btn btn-signin">Sign In</button>
+                <button class="btn btn-signup">Sign Up</button>
+            </div>
+            <div class="search-bar">
+                <input type="search" placeholder="Search for a player...">
+            </div>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+    <div class="container2" id="popupContainer" style="display: none; position: fixed; z-index: 9; width: 50%;">
+        <div id="popupFormContainer2" class="popup-container2">
+            <div class="popup2" >
+                <button id="closePopup2" class="close-btn2">&times;</button>
+                <div id="popupPlayerInfo" class="player-info-container"  style=" display: flex; gap:50px; height: 50vh; width: 50vw;">
+                    <!-- Player details will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <main>
+        <div class="intro-title">
+            <h2>Ultimate Team Strategies</h2>
+            <span>Create Your Own  dream team now!</span>
+        </div>
+        <section class="events">
+            <div>
+                <img  src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODkyIiBoZWlnaHQ9IjcyNSIgdmlld0JveD0iMCAwIDkwNCA2NTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik05MDMgNjQ5LjQzOUgxTDEyMC4zMTEgMUg3ODMuNzg4TDkwMyA2NDkuNDM5WiIgZmlsbD0iIzQwNDA0MCIgc3Ryb2tlPSIjNjk2OTY5IiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiLz4KPHBhdGggZD0iTTY5Ljg4NDMgMjc1LjAzOEg4MzQuMTY5IiBzdHJva2U9IiM2OTY5NjkiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIvPgo8cGF0aCBkPSJNNTUwLjk5MiAyNzUuNDI1QzU1My4xOTQgMzIxLjcwMyA1MDguOTIxIDM2MC43NjMgNDUyLjAxOSAzNjAuNzYzQzM5NS4xMTcgMzYwLjc2MyAzNTAuODUzIDMyMS43MDMgMzUzLjA2MiAyNzUuNDI1QzM1NS4xNzIgMjMxLjEyMyAzOTkuNDUyIDE5Ni41NjQgNDUyLjAzNSAxOTYuNTY0QzUwNC42MTggMTk2LjU2NCA1NDguODkgMjMxLjExNSA1NTAuOTkyIDI3NS40MjVaIiBzdHJva2U9IiM2OTY5NjkiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIvPgo8cGF0aCBkPSJNNTQxLjI4OCA3MS40MDA4QzU0My4wNzggMTA5LjAwOSA1MDMuMDg2IDE0MC42MzIgNDUxLjg5NyAxNDAuNjMyQzQwMC43MDggMTQwLjYzMiAzNjAuNzMyIDEwOS4wMTcgMzYyLjUzIDcxLjQwMDhDMzY0LjI1OSAzNS4yNDQ2IDQwNC4yNTEgNi45MzU5MSA0NTEuOTIgNi45MzU5MUM0OTkuNTgyIDYuOTM1OTEgNTM5LjU3NCAzNS4yNDQ2IDU0MS4yODggNzEuNDAwOFoiIHN0cm9rZT0iIzY5Njk2OSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIi8+CjxwYXRoIGQ9Ik0yNjkuMTI1IDk2LjQ5OTZINjQwLjA5M0w2MzAuNjYzIDEuMTUzMkgyNzguMzEyTDI2OS4xMjUgOTYuNDk5NloiIGZpbGw9IiM0MDQwNDAiIHN0cm9rZT0iIzY5Njk2OSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIi8+CjxwYXRoIGQ9Ik0zNzEuOTIyIDU0Ljc2MjVINTMyLjU0Mkw1MzAuMjE5IDEuMTM3MTVIMzc0LjI0NUwzNzEuOTIyIDU0Ljc2MjVaIiBzdHJva2U9IiM2OTY5NjkiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIvPgo8cGF0aCBkPSJNMzQzLjQ2NCA1MzAuMzMzQzM0Ni4wNjEgNDc0LjU1NCAzOTUuNzggNDMxLjI2MSA0NTQuNjI0IDQzMS4yNjFDNTEzLjQ2OSA0MzEuMjYxIDU2My4yNzkgNDc0LjU1NCA1NjUuOTk4IDUzMC4zMzNDNTY4Ljg1NSA1ODguOTEgNTE5LjE1MSA2MzguNiA0NTQuODUzIDYzOC42QzM5MC41NTQgNjM4LjYgMzQwLjczNyA1ODguOTEgMzQzLjQ3MSA1MzAuMzMzSDM0My40NjRaIiBzdHJva2U9IiM2OTY5NjkiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIvPgo8cGF0aCBkPSJNNjc1LjU5NyA0OTIuNTcySDIyNy4yNkwyMTEuOTExIDY0OS4xOThINjkwLjg0TDY3NS41OTcgNDkyLjU3MloiIGZpbGw9IiM0MDQwNDAiIHN0cm9rZT0iIzY5Njk2OSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIi8+CjxwYXRoIGQ9Ik01NTYuMzYyIDU1Ni42NDJIMzUyLjM1M0wzNDguNDMgNjQ5LjIzOEg1NjAuNDUzTDU1Ni4zNjIgNTU2LjY0MloiIHN0cm9rZT0iIzY5Njk2OSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIi8+Cjwvc3ZnPg==" alt="">
+                </div>
+                <section class="players">
+                    <div class="buttons-top">
+                        <button class="positionplay" style="background:transparent"  value="lw" onclick="addPlayerPopup('lw', this)">LW</button>
+                        <button class="positionplay" style="background:transparent" value="st" onclick="addPlayerPopup('st', this)">ST</button>
+                        <button class="positionplay" style="background:transparent" value="rw" onclick="addPlayerPopup('rw', this)">RW</button>
+                    </div>
+                    <div class="buttons-middle">
+                        <button class="positionplay" style="background:transparent" value="lm" onclick="addPlayerPopup('lb', this)">LB</button>
+                        <button class="positionplay" style="background:transparent" value="cm" onclick="addPlayerPopup('cm', this)">CM</button>
+                        <button class="positionplay" style="background:transparent" value="cdm" onclick="addPlayerPopup('cdm', this)">CDM</button>
+                        <button class="positionplay" style="background:transparent" value="cm" onclick="addPlayerPopup('cm', this)">CM</button>
+                        <button class="positionplay" style="background:transparent" value="rm" onclick="addPlayerPopup('rb', this)">RB</button>
+                    </div>
+                    <div class="buttons-bottom">
+                        <button class="positionplay" style="background:transparent" value="CB" onclick="addPlayerPopup('cb', this)">CB</button>
+                        <button class="positionplay" style="background:transparent" value="CB" onclick="addPlayerPopup('cb', this)">CB</button>
+                        <button class="positionplay" style="background:transparent" value="CB" onclick="addPlayerPopup('cb', this)">CB</button>
+                    </div>
+                    <div class="buttons-single">
+                        <button class="positionplay"  style="background:transparent" value="gk" onclick="addPlayerPopup('gk', this)">GK</button>
+                    </div>
+                </section>
+                
+               
+                
+        
+                <div class="container">
+                    <div id="popupFormContainer" class="popup-container">
+                        <div class="popup">
+                            <img src="src/assets/img/cplay.png" style="width: 600px; position: absolute; left: 7rem; bottom: -4rem;" alt="">
+                    
+                            <div>
+                                <button id="closePopup" class="close-btn">&times;</button>
+                                <h2>Add Player</h2>
+                                <form id="addPlayerForm">
+                                    <input type="text" id="playerName" name="playerName" placeholder="Name of player:" required>
+                                    <input type="text" id="playerimg" placeholder="URL of image:" required>
+                                    <input type="text" id="clubimg" placeholder="URL of club image:" required>
+                                    <input type="text" id="clubname" placeholder="name of club :" required>
+                                    <input type="text" id="nationalityimg" placeholder="URL of nationality image:" required>
+                                    <input type="text" id="nationalityname" placeholder="nationality :" required>
+                                    <select id="playerPosition" name="playerPosition">
+                                        <!-- <option value="GK">GK</option>
+                                        <option value="DEF">cb</option>
+                                        <option value="MID">lm</option>
+                                        <option value="ATT">cm</option>
+                                        <option value="GK">Goalkeeper</option>
+                                        <option value="DEF">Defender</option>
+                                        <option value="MID">Midfielder</option>
+                                        <option value="ATT">Attacker</option> -->
+                                      
+                                                <option  value="lw">lw</option>
+                                                <option  value="st ">st</option>
+                                                <option  value="rw">lm</option>
+                                                <option  value="lm">cm</option>
+                                                <option  value="cdm">cdm</option>
+                                                <option  value="cm">cm</option>
+                                                <option  value="rm">rm</option>
+                                                <option  value="CB">cb</option>
+                                                <option   value="CB">cb</option>
+                                                <option  value="CB">cb</option>
+                                                <option   value="gk">Gk</option>
+
+                                    </select>
+                                    <div class="myinput"></div>
+                                    <button id="btnAjouter" type="submit">Add Player</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button id="togglePopupBtn"> Add New Player</button> 
+                    
+    
+    
+      </div>
+      
+        </section>
+    </main>
+    <div id="playerList" class="player-list">
+        
+    </div>
+    <div id="totalPlayersText" class="player-count">Total Players: 0 / 18</div>
+    
+
+    <footer>
+        <div class="footer-content">
+          <p class="text-footer">&copy; 2024 Ultimate Team. All Rights Reserved.</p>
+          <div class="social-icons">
+            <a href="#"><img src="src/assets/img/facebook (1).png" alt="Facebook"></a>
+            <a href="#"><img src="src/assets/img/twitter.png" alt="Twitter"></a>
+            <a href="#"><img src="src/assets/img/instagram (1).png" alt="Instagram"></a>
+          </div>
+        </div>
+      </footer>
+      <script src="main.js"></script>
+      <!-- <script>
+      const padge = document.querySelector('.players')
+      
+      fetch('./players.json')
+        .then(res => res.json())
+        .then(res => {
+        players.forEach(post => {
+            padge.insertAdjacentHTML();
+        });
+        })
+      </script> -->
+</body>
+</html>
