@@ -19,7 +19,7 @@ const div_CBR = document.getElementById("CBR");
 const div_CBL = document.getElementById("CBL");
 const div_RB = document.getElementById("RB");
 
-const div_GK = document.getElementById("Gk");
+const div_GK = document.getElementById("GKP");
 
 let playerName = document.getElementById("f-name");
 let playerImage = document.getElementById("f-image");
@@ -35,20 +35,24 @@ let playerDefending = document.getElementById("f-defending");
 let playerPhysical = document.getElementById("f-physical");
 
 
-// Get elements
+
+
+
+
+
 const menuIcon = document.getElementById('menuIcon');
 const closeIcon = document.getElementById('closeIcon');
 const mobileNav = document.getElementById('mobileNav');
-
-// Open mobile navigation
 menuIcon.addEventListener('click', () => {
-    mobileNav.classList.remove('hidden'); // Show the mobile navigation
+    mobileNav.classList.remove('hidden'); 
+});
+closeIcon.addEventListener('click', () => {
+    mobileNav.classList.add('hidden'); 
 });
 
-// Close mobile navigation
-closeIcon.addEventListener('click', () => {
-    mobileNav.classList.add('hidden'); // Hide the mobile navigation
-});
+
+
+
 
 let Allplayers = [];
 let temData=[];
@@ -59,6 +63,10 @@ btnAjouter.addEventListener("click",()=>{
   toggleVisibility(crud_modal);
   toggleVisibility(modal_add_player);
 })
+
+
+
+
 
 function toggleVisibility(element) {
   if (element.classList.contains('hidden')) {
@@ -79,6 +87,12 @@ document.getElementById("btn_close_modal").addEventListener("click", function() 
 });
 
 
+
+
+
+
+
+
 function FiltrerAjouterPoopup(element) {
   divChoisiJoueur.innerHTML = '';  
   element.forEach(player => {
@@ -87,6 +101,75 @@ function FiltrerAjouterPoopup(element) {
     playerDiv.setAttribute('id', `${player.id}`);  
     playerDiv.setAttribute('ondblclick',"funcAjouter_Terrain(this,this.id);");  
     playerDiv.className = "relative  text-white rounded-lg";
+    if(player.position=='GK'){
+      playerDiv.innerHTML = `
+        <div class="absolute top-0 right-0 z-10 w-full flex justify-around">
+            <button onclick="suprimerJoueur(this.parentElement.parentElement)"><i class="fa fa-trash w-[30px] h-[30px] text-red-600"></i></button>
+    <button data-id="${player.id}" onclick="modifierJoueur(this)"><i class="fa fa-edit w-[30px] h-[30px] text-green-700"></i></button>
+        </div>
+        <div class="relative  h-[190px] bg-cover bg-center  bg-[url('asset/img/badge_total_rush.webp')] transition-all ease-in" data-id="${player.id}">
+            <div class="relative flex text-[#e9cc74] px-[0.3rem]">
+                <div class="absolute py-[0.8rem_0] text-xs uppercase font-light">
+                    <div class="text-[1rem] mt-5">${player.rating}</div>
+                    <div>${player.position}</div>
+                    <div class="block">
+                        <img src="${player.flag}" alt="${player.nationality}" class="w-[1rem] h-[14px] object-contain" />
+                    </div>
+                    <div class="block">
+                        <img src="${player.logo}" alt="${player.club}" class="w-[1rem] h-[14px] object-contain" />
+                    </div>
+                </div>
+                <div class="w-[70px] h-[80px] mx-auto overflow-hidden">
+                    <img src="${player.photo}" alt="${player.name}" class="w-full h-full object-contain relative right-[-1rem] bottom-0" />
+                </div>
+            </div>
+    
+            <div class="w-full flex justify-aroundtext-[#adf636] text-[0.9rem] font-bold uppercase">
+                <span class="ml-[0.4rem] text-shadow-lg">${player.position}</span>
+            </div>
+    
+            <div class="relative">
+                <div class="text-[#e9cc74] w-[90%] mx-auto">
+                    <div class="text-center w-[100%] text-[0.6rem] uppercase border-b-2 border-[#e9cc74]/[0.1]">
+                        <span class="block text-shadow-lg">${player.name}</span>
+                    </div>
+                
+                    <div class="flex justify-center">
+                        <div class="pr-[1.5rem] border-r-2 border-[#e9cc74]/[0.1]">
+                            <div class="flex items-center text-[0.5rem] uppercase">
+                                <span class="font-bold mr-[0.3rem]">${player.diving}</span>
+                                <span class="font-light">DIV</span>
+                            </div>
+                            <div class="flex items-center text-[0.5rem] uppercase">
+                                <span class="font-bold mr-[0.3rem]">${player.handling}</span>
+                                <span class="font-light">HAN</span>
+                            </div>
+                            <div class="flex items-center text-[0.5rem] uppercase">
+                                <span class="font-bold mr-[0.3rem]">${player.kicking}</span>
+                                <span class="font-light">KIC</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex items-center text-[0.5rem] uppercase">
+                                <span class="font-bold mr-[0.3rem]">${player.reflexes}</span>
+                                <span class="font-light">REF</span>
+                            </div>
+                            <div class="flex items-center text-[0.5rem] uppercase">
+                                <span class="font-bold mr-[0.3rem]">${player.speed}</span>
+                                <span class="font-light">SPD</span>
+                            </div>
+                            <div class="flex items-center text-[0.5rem] uppercase">
+                                <span class="font-bold mr-[0.3rem]">${player.positioning}</span>
+                                <span class="font-light">POS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    }
+    else{
     playerDiv.innerHTML = `
     <div class="absolute top-0 right-0 z-10 w-full flex justify-around">
         <button onclick="suprimerJoueur(this.parentElement.parentElement)"><i class="fa fa-trash w-[30px] h-[30px] text-red-600"></i></button>
@@ -152,10 +235,13 @@ function FiltrerAjouterPoopup(element) {
         </div>
     </div>
 `;
+}
     divChoisiJoueur.appendChild(playerDiv);
     
   });
 }
+
+
 function getPlayers() {
   showAllplzyerSection.innerHTML = '';
 
@@ -163,13 +249,13 @@ function getPlayers() {
       let playerDiv = document.createElement('div');
       playerDiv.setAttribute('draggable', 'true');
       playerDiv.setAttribute('id', `player-${player.id}`); 
-      playerDiv.className = "relative flex items-center justify-center bg-gray-800 text-white rounded-lg ";
+      playerDiv.className = "relative flex items-center justify-center text-white rounded-lg ";
        if(player.position=='GK'){playerDiv.innerHTML = `
         <div class="absolute top-0 right-0 z-10 w-full flex justify-around">
             <button onclick="suprimerJoueur(this.parentElement.parentElement)"><i class="fa fa-trash w-[30px] h-[30px] text-red-600"></i></button>
     <button data-id="${player.id}" onclick="modifierJoueur(this)"><i class="fa fa-edit w-[30px] h-[30px] text-green-700"></i></button>
         </div>
-        <div class="relative w-[100px] h-[180px] bg-cover bg-center  bg-[url('asset/img/badge_total_rush.webp')] transition-all ease-in" data-id="${player.id}">
+        <div class="relative w-[130px] h-[200px] bg-cover bg-center  bg-[url('asset/img/badge_total_rush.webp')] transition-all ease-in" data-id="${player.id}">
             <div class="relative flex text-[#e9cc74] px-[0.3rem]">
                 <div class="absolute py-[0.8rem_0] text-xs uppercase font-light">
                     <div class="text-[1rem] mt-5">${player.rating}</div>
@@ -186,7 +272,7 @@ function getPlayers() {
                 </div>
             </div>
     
-            <div class="w-full flex justify-around text-[#88e635] text-[0.7rem] font-bold uppercase">
+            <div class="w-full flex justify-aroundtext-[#adf636] text-[0.9rem] font-bold uppercase">
                 <span class="ml-[0.4rem] text-shadow-lg">${player.position}</span>
             </div>
     
@@ -232,13 +318,13 @@ function getPlayers() {
     `;}
     else{
       playerDiv.innerHTML = `
-    <div class="absolute top-0 right-0 z-10 w-full flex justify-around">
+    <div class="absolute top-0  right-0 z-10 w-full flex justify-around">
         <button onclick="suprimerJoueur(this.parentElement.parentElement)"><i class="fa fa-trash w-[30px] h-[30px] text-red-600"></i></button>
 <button data-id="${player.id}" onclick="modifierJoueur(this)"><i class="fa fa-edit w-[30px] h-[30px] text-green-700"></i></button>
     </div>
-    <div class="relative w-[100px] h-[180px] bg-cover bg-center  bg-[url('asset/img/badge_total_rush.webp')] transition-all ease-in" data-id="${player.id}">
-        <div class="relative flex text-[#e9cc74] px-[0.3rem]">
-            <div class="absolute py-[0.8rem_0] text-xs uppercase font-light">
+    <div class="relative w-[130px] h-[200px]  bg-cover bg-center  bg-[url('asset/img/badge_total_rush.webp')] transition-all ease-in" data-id="${player.id}">
+        <div class="relative flex pt-5 text-[#adf636] px-[0.3rem]">
+            <div class="absolute py-[0.8rem_0] text-md uppercase font-bold">
                 <div class="text-[1rem] mt-5">${player.rating}</div>
                 <div>${player.position}</div>
                 <div class="block">
@@ -253,7 +339,7 @@ function getPlayers() {
             </div>
         </div>
 
-        <div class="w-full flex justify-around text-[#88e635] text-[0.7rem] font-bold uppercase">
+        <div class="w-full flex justify-around text-[#adf636] text-[0.9rem] font-bold uppercase">
             <span class="ml-[0.4rem] text-shadow-lg">${player.position}</span>
         </div>
 
@@ -370,7 +456,6 @@ document.getElementById('add-player-btn').addEventListener('click', addPlayerToD
       physical: physical
     };
 
-    console.log(newPlayer);
     
   
     Allplayers.push(newPlayer);
@@ -498,7 +583,6 @@ document.getElementById('add-player-btn').addEventListener('click', addPlayerToD
                 break;
           case 'GK':
             if (div_GK.innerHTML.trim() === '') {
-              alert("jjjj")
               div_GK.appendChild(divCard);
               Allplayers.splice(I,1)
 
@@ -523,21 +607,13 @@ document.getElementById('add-player-btn').addEventListener('click', addPlayerToD
   function modifierJoueur(button) {
     const playerId = button.getAttribute('data-id');
 
-    console.log("Player ID: ", playerId);
 
-    if (!playerId) {
-        alert("Player ID not found!");
-        return;
-    }
-
+    
     const player = Allplayers.find(p => p.id === parseInt(playerId, 10));
+    
+    console.log("type is ",typeof(player));
+    
 
-    if (!player) {
-        alert("Player not found!");
-        return;
-    }
-
-    console.log(player);
 
     document.getElementById("u-name").value = player.name;
     document.getElementById("u-image").value = player.photo;
