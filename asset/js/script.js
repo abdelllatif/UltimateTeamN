@@ -251,15 +251,15 @@ function getPlayers() {
       playerDiv.setAttribute('id', `player-${player.id}`); 
       playerDiv.className = "relative flex items-center justify-center text-white rounded-lg ";
        if(player.position=='GK'){playerDiv.innerHTML = `
-        <div class="absolute top-0 right-0 z-10 w-full flex justify-around">
-            <button onclick="suprimerJoueur(this.parentElement.parentElement)"><i class="fa fa-trash w-[30px] h-[30px] text-red-600"></i></button>
-    <button data-id="${player.id}" onclick="modifierJoueur(this)"><i class="fa fa-edit w-[30px] h-[30px] text-green-700"></i></button>
-        </div>
-        <div class="relative w-[130px] h-[200px] bg-cover bg-center  bg-[url('asset/img/badge_total_rush.webp')] transition-all ease-in" data-id="${player.id}">
-            <div class="relative flex text-[#e9cc74] px-[0.3rem]">
-                <div class="absolute py-[0.8rem_0] text-xs uppercase font-light">
-                    <div class="text-[1rem] mt-5">${player.rating}</div>
-                    <div>${player.position}</div>
+       <div class="absolute top-0  right-0 z-10 w-full flex justify-around">
+        <button onclick="suprimerJoueur(this.parentElement.parentElement)"><i class="fa fa-trash w-[30px] h-[30px] text-red-600"></i></button>
+<button data-id="${player.id}" onclick="modifierJoueur(this)"><i class="fa fa-edit w-[30px] h-[30px] text-green-700"></i></button>
+    </div>
+    <div class="relative w-[130px] h-[210px]  bg-cover bg-center  bg-[url('asset/img/badge_total_rush.webp')] transition-all ease-in" data-id="${player.id}">
+        <div class="relative flex pt-5 text-[#adf636] px-[0.3rem]">
+            <div class="absolute py-[0.8rem_0] text-md uppercase font-bold">
+                <div class="text-[1rem] mt-5">${player.rating}</div>
+                <div>${player.position}</div>
                     <div class="block">
                         <img src="${player.flag}" alt="${player.nationality}" class="w-[1rem] h-[14px] object-contain" />
                     </div>
@@ -273,7 +273,6 @@ function getPlayers() {
             </div>
     
             <div class="w-full flex justify-aroundtext-[#adf636] text-[0.9rem] font-bold uppercase">
-                <span class="ml-[0.4rem] text-shadow-lg">${player.position}</span>
             </div>
     
             <div class="relative">
@@ -340,7 +339,6 @@ function getPlayers() {
         </div>
 
         <div class="w-full flex justify-around text-[#adf636] text-[0.9rem] font-bold uppercase">
-            <span class="ml-[0.4rem] text-shadow-lg">${player.position}</span>
         </div>
 
         <div class="relative">
@@ -610,7 +608,7 @@ document.getElementById('add-player-btn').addEventListener('click', addPlayerToD
 
     
     const player = Allplayers.find(p => p.id === parseInt(playerId, 10));
-    
+
     console.log("type is ",typeof(player));
     
 
@@ -640,10 +638,7 @@ function savePlayerChanges(event) {
     event.preventDefault();
 
     const playerIndex = Allplayers.findIndex(p => p.id === currentPlayerId);
-    if (playerIndex === -1) {
-        alert("Player not found!");
-        return;
-    }
+ 
 
     Allplayers[playerIndex] = {
         id: currentPlayerId,
