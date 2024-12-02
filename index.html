@@ -241,7 +241,7 @@ header nav {
 
 <section
   id="update-player-modal"
-  class="hidden flex flex-col z-50 text-white px-4 py-5 bg-red-600 rounded-md shadow-md fixed w-[90%] md:max-w-[500px] md:min-w-[300px] top-[50%] translate-y-[-50%] left-[50%] translate-x-[-50%] "
+  class="hidden  z-50 text-white px-4 py-5 bg-red-600 rounded-md shadow-md fixed w-[90%] md:max-w-[500px] md:min-w-[300px] top-[50%] translate-y-[-50%] left-[50%] translate-x-[-50%] "
 >
   <button type="button" id="btn_close_update_modal">
     <img
@@ -281,6 +281,7 @@ header nav {
             </select>
             <div class="error-message text-red-600 text-sm font-semibold"></div>
         </div>
+        <div id="test">
         <div class="flex flex-col gap">
             <input id="u-nationality"
                 class="rounded-md shadow-sm px-2 bg-gray-400 placeholder:text-white text-sm h-[30px] mb-2"
@@ -335,6 +336,7 @@ header nav {
                 type="number" placeholder="physical">
             <div class="error-message text-red-600 text-sm font-semibold"></div>
         </div>
+        </div>
     </div>
     <button
       type="submit"
@@ -384,7 +386,7 @@ header nav {
             </div>
           </div>
           <div class="flex pl-28 md:pl-72 lg:pl-0  lg:justify-around">
-            <div id="GKP" onclick="positionFliter('GK', this)" class="hover:opacity-75 w-11 h-16 hover:cursor-pointer md:w-[100px] md:h-[180px] bg-cover bg-center" style="background-image: url('asset/img/badge_total_rush.webp');">
+            <div id="GKP" onclick="positionFliter('GK', this)" class=" w-11 h-16 hover:cursor-pointer md:w-[100px] md:h-[180px] bg-cover bg-center" style="background-image: url('asset/img/badge_total_rush.webp');">
             </div>
           </div>
 

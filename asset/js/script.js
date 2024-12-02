@@ -319,7 +319,7 @@ function getPlayers() {
       playerDiv.innerHTML = `
     <div class="absolute top-0  right-0 z-10 w-full flex justify-around">
         <button onclick="suprimerJoueur(this.parentElement.parentElement)"><i class="fa fa-trash w-[30px] h-[30px] text-red-600"></i></button>
-<button data-id="${player.id}" onclick="modifierJoueur(this)"><i class="fa fa-edit w-[30px] h-[30px] text-green-700"></i></button>
+<button data-id="${player.id}" onclick="modifierJoueur(this)"><i class="butto-edit fa fa-edit w-[30px] h-[30px] text-green-700"></i></button>
     </div>
     <div class="relative w-[130px] h-[200px]  bg-cover bg-center  bg-[url('asset/img/badge_total_rush.webp')] transition-all ease-in" data-id="${player.id}">
         <div class="relative flex pt-5 text-[#adf636] px-[0.3rem]">
@@ -660,8 +660,9 @@ function savePlayerChanges(event) {
 
     getPlayers();
 
-    document.getElementById("update-player-modal").classList.add("hidden");
+    // document.getElementById("update-player-modal").classList.toggle("hidden");
 }
+
 
 document.getElementById("update-player-form").addEventListener("submit", savePlayerChanges);
 
@@ -672,7 +673,7 @@ document.getElementById("btn_close_update_modal").addEventListener("click", () =
 
   function suprimerJoueur(element)
   {
-    alert('suprimer',element);
+    alert('suprimer avec success',element);
     element.remove()
     var I = Allplayers.findIndex((player) => player.id == element.id);
     Allplayers.splice(I,1)
