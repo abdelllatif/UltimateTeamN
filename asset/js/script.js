@@ -108,7 +108,7 @@ function FiltrerAjouterPoopup(element) {
     <button data-id="${player.id}" onclick="modifierJoueur(this)"><i class="fa fa-edit w-[30px] h-[30px] text-green-700"></i></button>
         </div>
         <div class="relative  h-[190px] bg-cover bg-center  bg-[url('asset/img/badge_total_rush.webp')] transition-all ease-in" data-id="${player.id}">
-            <div class="relative flex text-[#e9cc74] px-[0.3rem]">
+            <div class="relative flex text--[#adf636] px-[0.3rem]">
                 <div class="absolute py-[0.8rem_0] text-xs uppercase font-light">
                     <div class="text-[1rem] mt-5">${player.rating}</div>
                     <div>${player.position}</div>
@@ -129,13 +129,13 @@ function FiltrerAjouterPoopup(element) {
             </div>
     
             <div class="relative">
-                <div class="text-[#e9cc74] w-[90%] mx-auto">
-                    <div class="text-center w-[100%] text-[0.6rem] uppercase border-b-2 border-[#e9cc74]/[0.1]">
+                <div class="text--[#adf636] w-[90%] mx-auto">
+                    <div class="text-center w-[100%] text-[0.6rem] uppercase border-b-2 border--[#adf636]/[0.1]">
                         <span class="block text-shadow-lg">${player.name}</span>
                     </div>
                 
                     <div class="flex justify-center">
-                        <div class="pr-[1.5rem] border-r-2 border-[#e9cc74]/[0.1]">
+                        <div class="pr-[1.5rem] border-r-2 border--[#adf636]/[0.1]">
                             <div class="flex items-center text-[0.5rem] uppercase">
                                 <span class="font-bold mr-[0.3rem]">${player.diving}</span>
                                 <span class="font-light">DIV</span>
@@ -176,7 +176,7 @@ function FiltrerAjouterPoopup(element) {
 <button data-id="${player.id}" onclick="modifierJoueur(this)"><i class="fa fa-edit w-[30px] h-[30px] text-green-700"></i></button>
     </div>
     <div class="relative  h-[180px] bg-cover w-28 bg-center bg-[url('asset/img/badge_total_rush.webp')] transition-all ease-in" data-id="${player.id}">
-        <div class="relative flex text-[#e9cc74] px-[0.3rem]">
+        <div class="relative flex text--[#adf636] px-[0.3rem]">
             <div class="absolute py-[0.8rem_0] text-xs uppercase font-light">
                 <div class="text-[1rem] mt-5">${player.rating}</div>
                 <div>${player.position}</div>
@@ -197,12 +197,12 @@ function FiltrerAjouterPoopup(element) {
         </div>
 
         <div class="relative">
-            <div class="text-[#e9cc74] w-[90%] mx-auto">
-                <div class="text-center w-[100%] text-[0.6rem] uppercase border-b-2 border-[#e9cc74]/[0.1]">
+            <div class="text--[#adf636] w-[90%] mx-auto">
+                <div class="text-center w-[100%] text-[0.6rem] uppercase border-b-2 border--[#adf636]/[0.1]">
                     <span class="block text-shadow-lg">${player.name}</span>
                 </div>
                 <div class="flex justify-center">
-                    <div class="pr-[1.5rem] border-r-2 border-[#e9cc74]/[0.1]">
+                    <div class="pr-[1.5rem] border-r-2 border--[#adf636]/[0.1]">
                         <div class="flex items-center text-[0.5rem] uppercase">
                             <span class="font-bold mr-[0.3rem]">${player.pace}</span>
                             <span class="font-light">PAC</span>
@@ -247,7 +247,6 @@ function getPlayers() {
 
   Allplayers.forEach(player => {
       let playerDiv = document.createElement('div');
-      playerDiv.setAttribute('draggable', 'true');
       playerDiv.setAttribute('id', `player-${player.id}`); 
       playerDiv.className = "relative flex items-center justify-center text-white rounded-lg ";
        if(player.position=='GK'){playerDiv.innerHTML = `
@@ -276,13 +275,13 @@ function getPlayers() {
             </div>
     
             <div class="relative">
-                <div class="text-[#e9cc74] w-[90%] mx-auto">
-                    <div class="text-center w-[100%] text-[0.6rem] uppercase border-b-2 border-[#e9cc74]/[0.1]">
+                <div class="text--[#adf636] w-[90%] mx-auto">
+                    <div class="text-center w-[100%] text-[0.6rem] uppercase border-b-2 border--[#adf636]/[0.1]">
                         <span class="block text-shadow-lg">${player.name}</span>
                     </div>
                 
                     <div class="flex justify-center">
-                        <div class="pr-[1.5rem] border-r-2 border-[#e9cc74]/[0.1]">
+                        <div class="pr-[1.5rem] border-r-2 border--[#adf636]/[0.1]">
                             <div class="flex items-center text-[0.5rem] uppercase">
                                 <span class="font-bold mr-[0.3rem]">${player.diving}</span>
                                 <span class="font-light">DIV</span>
@@ -319,7 +318,7 @@ function getPlayers() {
       playerDiv.innerHTML = `
     <div class="absolute top-0  right-0 z-10 w-full flex justify-around">
         <button onclick="suprimerJoueur(this.parentElement.parentElement)"><i class="fa fa-trash w-[30px] h-[30px] text-red-600"></i></button>
-<button data-id="${player.id}" onclick="modifierJoueur(this)"><i class="butto-edit fa fa-edit w-[30px] h-[30px] text-green-700"></i></button>
+<button data-id="${player.id}" onclick="modifierJoueur(this)"><i class="fa fa-edit w-[30px] h-[30px] text-green-700"></i></button>
     </div>
     <div class="relative w-[130px] h-[200px]  bg-cover bg-center  bg-[url('asset/img/badge_total_rush.webp')] transition-all ease-in" data-id="${player.id}">
         <div class="relative flex pt-5 text-[#adf636] px-[0.3rem]">
@@ -342,13 +341,13 @@ function getPlayers() {
         </div>
 
         <div class="relative">
-            <div class="text-[#e9cc74] w-[90%] mx-auto">
-                <div class="text-center w-[100%] text-[0.6rem] uppercase border-b-2 border-[#e9cc74]/[0.1]">
+            <div class="text--[#adf636] w-[90%] mx-auto">
+                <div class="text-center w-[100%] text-[0.6rem] uppercase border-b-2 border--[#adf636]/[0.1]">
                     <span class="block text-shadow-lg">${player.name}</span>
                 </div>
             
                 <div class="flex justify-center">
-                    <div class="pr-[1.5rem] border-r-2 border-[#e9cc74]/[0.1]">
+                    <div class="pr-[1.5rem] border-r-2 border--[#adf636]/[0.1]">
                         <div class="flex items-center text-[0.5rem] uppercase">
                             <span class="font-bold mr-[0.3rem]">${player.pace}</span>
                             <span class="font-light">PAC</span>
@@ -660,9 +659,8 @@ function savePlayerChanges(event) {
 
     getPlayers();
 
-    // document.getElementById("update-player-modal").classList.toggle("hidden");
+    document.getElementById("update-player-modal").classList.add("hidden");
 }
-
 
 document.getElementById("update-player-form").addEventListener("submit", savePlayerChanges);
 
@@ -673,7 +671,7 @@ document.getElementById("btn_close_update_modal").addEventListener("click", () =
 
   function suprimerJoueur(element)
   {
-    alert('suprimer avec success',element);
+    alert('suprimer',element);
     element.remove()
     var I = Allplayers.findIndex((player) => player.id == element.id);
     Allplayers.splice(I,1)
