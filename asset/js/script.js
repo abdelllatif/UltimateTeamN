@@ -477,113 +477,88 @@ document.getElementById('add-player-btn').addEventListener('click', addPlayerToD
   function funcAjouter_Terrain(divCard,id) {
     var I = Allplayers.findIndex((player) => player.id == id);
     
-    console.log("players",Allplayers)
     Allplayers.forEach(player => {
       console.log("index",typeof(player.id),typeof(id))
       if (player.id == id) {  
         switch (player.position) {
           case 'LW':
+            div_LW.innerHTML = '';
               if (div_LW.innerHTML.trim() === '') {
-                div_LW.innerHTML=divCard.innerHTML 
-                divCard.remove()
-                Allplayers.splice(I,1)
-              } else {
-                AjouterAu_Changement(divCard)
+                div_LW.appendChild(divCard);
               }
               break;
 
             
           case 'ST':
+            div_ST.innerHTML = '';
                 if (div_ST.innerHTML.trim() === '') {
                   div_ST.appendChild(divCard);
-                } else {
-                  AjouterAu_Changement(divCard)
-                Allplayers.splice(I,1)
-
                 }   
                 break;
 
           case 'RW':
+            div_RW.innerHTML = '';
             if (div_RW.innerHTML.trim() === '') {
               div_RW.appendChild(divCard);
-              Allplayers.splice(I,1)
 
-            } else {
-              AjouterAu_Changement(divCard)
-          }
+            } 
               break;
           case 'CM':
+            div_CM.innerHTML = '';
             if (div_CM.innerHTML.trim() === '') {
               div_CM.appendChild(divCard);
-              Allplayers.splice(I,1)
 
-            } else {
-              AjouterAu_Changement(divCard)
-            }
+            } 
               break;
           case 'CML':
+            div_CML.innerHTML = '';
             if (div_CML.innerHTML.trim() === '') {
               div_CML.appendChild(divCard);
-              Allplayers.splice(I,1)
 
-            } else {
-              AjouterAu_Changement(divCard)
-            }
+            } 
               break;
           case 'CMR':
+            div_CMR.innerHTML = '';
             if (div_CMR.innerHTML.trim() === '') {
-                Allplayers.splice(I,1)
                 div_CMR.appendChild(divCard);
-            } else {
-              AjouterAu_Changement(divCard)
-            }
+            } 
               break;
           case 'LB':
+            div_LB.innerHTML = '';
             if (div_LB.innerHTML.trim() === '') {
               div_LB.appendChild(divCard);
-              Allplayers.splice(I,1)
 
-            } else {
-              AjouterAu_Changement(divCard)
-          }
+            }
               break;
           
           case 'CBL':
+            div_CBL.innerHTML = '';
             if (div_CBL.innerHTML.trim() === '') {
               div_CBL.appendChild(divCard);
-              Allplayers.splice(I,1)
 
-            } else {
-              AjouterAu_Changement(divCard)
-          }
+            }
               
               break;
           case 'CBR':
+            div_CBR.innerHTML = '';
                   if (div_CBR.innerHTML.trim() === '') {
                     div_CBR.appendChild(divCard);
-                Allplayers.splice(I,1)
 
-                  } else {
-                    AjouterAu_Changement(divCard)
-                  }
+                  } 
               break;
           case 'RB':
+            div_RB.innerHTML = '';
                 if (div_RB.innerHTML.trim() === '') {
                 div_RB.appendChild(divCard);
-                Allplayers.splice(I,1)
 
-                }else {
-                  AjouterAu_Changement(divCard)
                 }
                 break;
           case 'GK':
+            div_GK.innerHTML = '';
             if (div_GK.innerHTML.trim() === '') {
               div_GK.appendChild(divCard);
-              Allplayers.splice(I,1)
-
-            } else {
-              AjouterAu_Changement(divCard)
             }
+          
               break;
           default:
               console.log('Unknown position');
@@ -592,11 +567,7 @@ document.getElementById('add-player-btn').addEventListener('click', addPlayerToD
       }
     });
   }
-  
-  function AjouterAu_Changement(joueur)
-  {
-    document.getElementById('Bonne_touche').appendChild(joueur); 
-  }
+
 
 
   function modifierJoueur(button) {
@@ -644,13 +615,13 @@ function savePlayerChanges(event) {
         position: document.getElementById("u-position").value,
         nationality: document.getElementById("u-nationality").value.trim(),
         club: document.getElementById("u-club").value.trim(),
-        rating: parseInt(document.getElementById("u-rating").value, 10),
-        pace: parseInt(document.getElementById("u-pace").value, 10),
-        shooting: parseInt(document.getElementById("u-shooting").value, 10),
-        passing: parseInt(document.getElementById("u-passing").value, 10),
-        dribbling: parseInt(document.getElementById("u-driblling").value, 10),
-        defending: parseInt(document.getElementById("u-defending").value, 10),
-        physical: parseInt(document.getElementById("u-physical").value, 10),
+        rating: parseInt(document.getElementById("u-rating").value),
+        pace: parseInt(document.getElementById("u-pace").value),
+        shooting: parseInt(document.getElementById("u-shooting").value),
+        passing: parseInt(document.getElementById("u-passing").value),
+        dribbling: parseInt(document.getElementById("u-driblling").value),
+        defending: parseInt(document.getElementById("u-defending").value),
+        physical: parseInt(document.getElementById("u-physical").value),
     };
 
     localStorage.setItem("allplayers", JSON.stringify(Allplayers));
@@ -669,13 +640,12 @@ document.getElementById("btn_close_update_modal").addEventListener("click", () =
 
   function suprimerJoueur(element)
   {
-    alert('suprimer',element);
+    alert('suprimer avec sucsses');
     element.remove()
     var I = Allplayers.findIndex((player) => player.id == element.id);
     Allplayers.splice(I,1)
   }
 
-  // const addPlayerForm = document.getElementById("addPlayerForm");
 
   let validateForm = () => {
     if (playerName.value === "" || playerName.value.length > 20) {
@@ -703,7 +673,7 @@ document.getElementById("btn_close_update_modal").addEventListener("click", () =
     } else if (playerPhysical.value === "" || playerPhysical.value <= 0) {
       showErrorMessage(playerPhysical, "invalid physical number");
     } else {
-      console.log("added successfully");
+      alert.log("added successfully");
       
     }
   };
