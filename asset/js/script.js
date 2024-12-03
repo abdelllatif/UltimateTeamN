@@ -104,7 +104,7 @@ function FiltrerAjouterPoopup(element) {
       playerDiv.innerHTML = `
         <div class="absolute top-0 right-0 z-10 w-full flex justify-around">
             <button onclick="suprimerJoueur(this.parentElement.parentElement)"><i class="fa fa-trash w-[30px] h-[30px] text-red-600"></i></button>
-    <button data-id="${player.id}" onclick="modifierJoueur(this)"><i class="fa fa-edit w-[30px] h-[30px] text-green-700"></i></button>
+    <button data-id="${player.id}" onclick="modifierJoueur(this)"><i class="fa fa-edit w-[30px] h-[30px] text-blue-700"></i></button>
         </div>
         <div class="relative  h-[200px] bg-cover bg-center  bg-[url('asset/img/badge_total_rush.webp')] transition-all ease-in" data-id="${player.id}">
             <div class="relative flex text--[#adf636] px-[0.3rem]">
@@ -172,7 +172,7 @@ function FiltrerAjouterPoopup(element) {
     playerDiv.innerHTML = `
     <div class="absolute top-0 right-0 z-10 w-full flex justify-around">
         <button onclick="suprimerJoueur(this.parentElement.parentElement)"><i class="fa fa-trash w-[30px] h-[30px] text-red-600"></i></button>
-<button data-id="${player.id}" onclick="modifierJoueur(this)"><i class="fa fa-edit w-[30px] h-[30px] text-green-700"></i></button>
+<button data-id="${player.id}" onclick="modifierJoueur(this)"><i class="fa fa-edit w-[30px] h-[30px] text-blue-700"></i></button>
     </div>
     <div class="relative  h-[180px] bg-cover w-28 bg-center bg-[url('asset/img/badge_total_rush.webp')] transition-all ease-in" data-id="${player.id}">
         <div class="relative flex text--[#adf636] px-[0.3rem]">
@@ -251,7 +251,7 @@ function getPlayers() {
        if(player.position=='GK'){playerDiv.innerHTML = `
        <div class="absolute top-0  right-0 z-10 w-full flex justify-around">
         <button onclick="suprimerJoueur(this.parentElement.parentElement)"><i class="fa fa-trash w-[30px] h-[30px] text-red-600"></i></button>
-<button data-id="${player.id}" onclick="modifierJoueur(this)"><i class="fa fa-edit w-[30px] h-[30px] text-green-700"></i></button>
+<button data-id="${player.id}" onclick="modifierJoueur(this)"><i class="fa fa-edit w-[30px] h-[30px] text-blue-700"></i></button>
     </div>
     <div class="relative w-[130px] h-[210px]  bg-cover bg-center  bg-[url('asset/img/badge_total_rush.webp')] transition-all ease-in" data-id="${player.id}">
         <div class="relative flex pt-5 text-[#adf636] px-[0.3rem]">
@@ -317,7 +317,7 @@ function getPlayers() {
       playerDiv.innerHTML = `
     <div class="absolute top-0  right-0 z-10 w-full flex justify-around">
         <button onclick="suprimerJoueur(this.parentElement.parentElement)"><i class="fa fa-trash w-[30px] h-[30px] text-red-600"></i></button>
-<button data-id="${player.id}" onclick="modifierJoueur(this)"><i class="fa fa-edit w-[30px] h-[30px] text-green-700"></i></button>
+<button data-id="${player.id}" onclick="modifierJoueur(this)"><i class="fa fa-edit w-[30px] h-[30px] text-blue-700"></i></button>
     </div>
     <div class="relative w-[130px] h-[200px]  bg-cover bg-center  bg-[url('asset/img/badge_total_rush.webp')] transition-all ease-in" data-id="${player.id}">
         <div class="relative flex pt-5 text-[#adf636] px-[0.3rem]">
