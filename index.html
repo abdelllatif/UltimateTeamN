@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <title>Ultimate Team FUT</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="./asset/css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -119,7 +119,7 @@ header nav {
 
   <!-- filtrer de positions -->
   <section id="crud-modal" class="bg-black bg-opacity-75  items-center justify-center fixed inset-0 z-50  hidden ">
-    <button id="btnClose" class="absolute top-2 right-2 text-white font-bold text-xl" aria-label="Close modal">
+    <button id="btnClose" class="absolute top-2 right-2 text-white font-bold text-xl" >
       &times;
     </button>
     <h3 class="text-lg font-semibold text-gray-900 dark:text-white text-center w-[90%]">choisi nouvelle joueur</h3>
@@ -127,7 +127,7 @@ header nav {
     </div>
     <div class="flex justify-center">
       <button id="btnAjoute" 
-        class="text-white mb-[2%] inline-flex items-center bg-blue-400 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-400 dark:focus:ring-blue-800">
+        class="text-white mb-[2%] inline-flex items-center bg-blue-400 hover:bg-blue-800 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center">
         Ajouter Nouvelle joueur
       </button>
     </div>
@@ -137,7 +137,7 @@ header nav {
   <section
   class="hidden flex z-50 text-white flex-col px-4 py-5 bg-slate-600 rounded-md shadow-md fixed w-[90%] md:max-w-[500px] md:min-w-[300px] top-[50%] translate-y-[-50%] left-[50%] translate-x-[-50%] z-10"
   id="add-player-modal">
-  <button type="button" id="btn_close_modal"><img src="./asset/img/close.png" alt="close"
+  <button type="button" id="btn_close_modal"><img src="./asset/img/close.png" alt="fermer"
           class="w-[30px] h-[30px] absolute right-4 top-2 "></button>
   <h2 class="text-lg mx-auto font-bold text-white mb-3">Add Player</h2>
   <form action="" class="flex flex-col">
@@ -349,11 +349,8 @@ header nav {
   <!-- main -->
    <main class="grid xl:pb-10   grid-cols-1 md:grid-cols-1 lg:grid-cols-4  p-3 bg-[url(asset/img/bgimg.jpg)] bg-cover bg-center pt-28" >
 
-        <!-- <section id="allplayerSection" class=" flex gap-2 flex-wrap justify-center sm:w-screen md:w-screen lg:w-full  h-screen overflow-auto">
-        </section> -->
-
         <section  class=" grid grid-rows-4 gap-y-10  sm:gap-y-12 md:gap-y-20 col-span-2  bg-[url(https://i.pinimg.com/736x/13/cc/1f/13cc1f51b911c7fe4f947e22e6eabf6a.jpg)] xl:pb-80 bg-contain bg-no-repeat rounded-md">
-          <!-- attaque -->
+          <!-- attaque on titan -->
           <div class="flex gap-16 md:gap-48 lg:justify-around ">
             <div id="LW" onclick="positionFliter('LW', this)" class="relative hover:shadow-sm w-11 h-16 hover:cursor-pointer md:w-[100px] md:h-[180px] bg-cover bg-center " style="background-image: url('asset/img/badge_total_rush.webp');"> </div>
             <div id="ST" onclick="positionFliter('ST', this)" class="hover:shadow-sm w-11 h-16 hover:cursor-pointer md:w-[100px] md:h-[180px] bg-cover bg-center " style="background-image: url('asset/img/badge_total_rush.webp');">
@@ -362,7 +359,7 @@ header nav {
             </div>
           </div>
 
-          <!-- milieu -->
+          <!-- centre -->
           <div  class="flex gap-16 md:gap-48 lg:justify-around ">
             <div id="CML" onclick="positionFliter('CML', this)" class="hover:shadow-sm w-11 h-16 hover:cursor-pointer md:w-[100px] md:h-[180px] bg-cover bg-center" style="background-image: url('asset/img/badge_total_rush.webp');">
             </div>
